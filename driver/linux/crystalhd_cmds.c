@@ -25,8 +25,10 @@
  **********************************************************************/
 
 #include <linux/version.h>
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,9,0)
-#include <linux/sched/signal.h>
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,16,0)
+	#include <linux/sched/signal.h>
+#else
+	#include <linux/delay.h>
 #endif
 
 #include "crystalhd_lnx.h"

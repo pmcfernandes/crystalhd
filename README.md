@@ -1,19 +1,19 @@
-# Crystal HD Hardware Decoder Driver on Ubuntu 13.04 Linux kernel 3.8.0-25
+# Crystal HD Hardware Decoder Driver on Arch Linux kernel 4.9+
 ## Broadcom BCM70012 & BCM70015
 
-After a lot a retries to get the rigth experience with the Crystal HD on Ubuntu, 
+After a lot a retries to get the rigth experience with the Crystal HD on Arch Linux, 
 
 **1. Install required files**
 
-    sudo apt-get install checkinstall git-core autoconf build-essential subversion dpkg-dev fakeroot pbuilder build-essential dh-make debhelper devscripts patchutils quilt git-buildpackage pristine-tar git yasm zlib1g-dev zlib-bin libzip-dev libx11-dev libx11-dev libxv-dev vstream-client-dev libgtk2.0-dev libpulse-dev libxxf86dga-dev x11proto-xf86dga-dev git libgstreamermm-0.10-dev libgstreamer0.10-dev automake libtool python-appindicator 
+    pacman -S linux49-headers libcrystalhd
     
-**2. Ge the source**
+**2. Get the source**
 
 Get the driver source code from the git repository.
 
-    git clone https://github.com/dbason/crystalhd.git
+    git clone https://github.com/pmcfernandes/crystalhd.git
 
-_The original repo source is available at git://git.linuxtv.org/jarod/crystalhd.git_
+_The original repo source is available at https://github.com/yeradis/crystalhd.git
     
 **3. Compile driver, install libraries, and load driver**
 
@@ -25,20 +25,13 @@ Use make command to compile driver. If you have multiple core processor then use
     make -j2
     sudo make install
     
-**4. Install the libraries.**
-
-    cd ../../linux_lib/libcrystalhd/
-    make -j2
-    sudo make install 
-    
 **5. Load the driver.**
 
     sudo modprobe crystalhd
     
 **6. Reboot your system** , then check if 'crystalhd' is listed in the output of the following commands.
 
-    lsmod
-    dmesg | grep crystalhd
+    lsmod | grep crystalhd
     
  Then you should see something like this:
  
@@ -65,8 +58,6 @@ Reinstall the driver.
     cd crystalhd/driver/linux
     sudo make install
 
-
-Btw this instructions referred to http://knowledge.evot.biz/documentation/how-to-compile-and-install-the-broadcom-crystal-hd-hardware-decoder-bcm70012-70015-driver-on-ubuntu and fixed some issues appeared using a patch from M25 user at https://bbs.archlinux.org/viewtopic.php?pid=1253622#p1253622
 
 So, the sources on this repository are updated with the fixes and patches in order to make your life easier.
 
