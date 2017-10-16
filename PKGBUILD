@@ -3,7 +3,7 @@
 pkgname=crystalhd
 pkgver=20100327
 pkgrel=1
-kgdesc="Broadcom CrystalHD driver for Kernel 4.9"
+pkgdesc="Broadcom CrystalHD driver for Kernel 4.9"
 arch=('any')
 depends=('linux49-headers')
 makedepends=('git')
